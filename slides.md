@@ -9,8 +9,6 @@ info: |
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-drawings:
-  persist: false
 title: Welcome to Slidev
 colorSchema: light
 ---
@@ -107,14 +105,17 @@ h1 {
 
 ## 跨项目代码难共享
 
+<v-clicks>
+
 贴例子
----
 
+</v-clicks>
+
+---
 layout: center
-
 ---
 
-# monorepo
+# Monorepo
 
 ---
 
@@ -142,17 +143,24 @@ Monorepo 是一种项目代码管理方式，指单个仓库中管理多个项�
 
 # 经典开源案例
 
+<v-clicks>
+
 贴几个开源案例
+
+</v-clicks>
+
+---
 
 # pnpm： Workspace
 
 贴上具体的案例
 ---
 
-class: px-20
+# 简易实现 Monorepo
+
 ---
 
-# Monorepo简易实现
+# 项目实践
 
 ---
 
@@ -162,7 +170,9 @@ class: px-20
 
 # Monorepo的缺点
 
-无论是对于代码层面的设计，亦或是仓库管理层面的设计思想，都像踩跷跷板一样，没有最好，只有最适合，monorepo也有一些不足的地方
+monorepo也有一些不足的地方
+
+<v-clicks>
 
 - 无法管理某个、某些项目对于指定人员的权限
 
@@ -171,7 +181,19 @@ class: px-20
 - 发布构建的难度较大
 
 - 不适用于业务相对零散、项目之间关系不大的场景
+</v-clicks>
 
-# Learn More About Monorepo
+---
+layout: center
+---
+## 无论是对于代码层面的设计，亦或是仓库管理层面的设计思想，都像踩跷跷板一样，没有最好，只有最适合
+---
 
-[turbo: what-is-a-monorepo](https://turbo.build/repo/docs/handbook/what-is-a-monorepo) · [项目级 monorepo 策略最佳实践](https://zhuanlan.zhihu.com/p/348898271)
+## 查阅以下链接了解更多
+
+[Turbo: what-is-a-monorepo](https://turbo.build/repo/docs/handbook/what-is-a-monorepo)  
+[项目级 monorepo 策略最佳实践](https://zhuanlan.zhihu.com/p/348898271)  
+
+---
+
+# Thank You
