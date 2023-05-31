@@ -20,17 +20,23 @@ colorSchema: light
 </p>
 
 <div abs-bl mx-14 my-12 flex flex-col>
-  <div text-sm opacity-50>2022/12/10</div>
-  <div text-sm opacity-50>Author: 王伟平</div>
+  <div text-sm opacity-50>2023/06/02</div>
+  <div text-sm opacity-50>Author: huangyan321</div>
 </div>
 
 ---
-
-# 思考：现有仓库管理方式遇到了什么问题？
+layout: image-right
+# the image source
+image: static/工具库重复4.png
+---
+# 思考：现有仓库管理方式（多仓库）会遇到什么问题？
 
 <v-clicks>
 
-可以先贴一张gif，然后演示目前打包等等的不足之处
+- 工具库代码极为重复
+- 依赖管理复杂，当同一个依赖在不同的仓库中使用了不同的版本时，有时可能会出现我的电脑能跑，为什么你就不能跑的疑问
+- 增加团队未来增加组件库时的成本
+- CI/CD的复杂性，在团队不断发展的过程中，为了方便代码管理，不可避免地需要设置和维护CI/CD流程，但多仓库模式下，每次起新项目都要在仓库中设置。
 
 </v-clicks>
 ---
