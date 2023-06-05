@@ -25,43 +25,65 @@ colorSchema: light
 </div>
 
 ---
-layout: image-right
-# the image source
-image: static/工具库重复4.png
+layout: two-cols
 ---
-# 思考：现有仓库管理方式（多仓库）会遇到什么问题？
+
+# 现有仓库管理方式
+<v-click>
+
+我们大部分前端应用都采用`Multi repo`的方式来管理，即每个独立的项目都有相对应的`repo`，很容易维护自己的项目、并且分清责任。
+</v-click>
+::right::
+<v-click>
+
+```
+queue-admin
+  ├ node_modules
+  ├ src
+  ├ xxxx
+hos-admin
+  ├ node_modules
+  ├ src
+  ├ xx...
+medical-device
+  ├ node_modules
+  ├ src
+  ├ xx...
+bedside-terminal
+  ├ node_modules
+  ├ src
+  ├ xx...
+device
+  ├ html
+  ├ css
+  ├ js
+  ├ xx...
+chart
+```
+
+<br>
+<br>
+</v-click>
+---
+
+# 遇到什么问题？
+
+
 
 <v-clicks>
 
-- 工具库代码极为重复
-- 依赖管理复杂，当同一个依赖在不同的仓库中使用了不同的版本时，有时可能会出现我的电脑能跑，为什么你就不能跑的疑问
-- 增加团队未来增加组件库时的成本
-- CI/CD的复杂性，在团队不断发展的过程中，为了方便代码管理，不可避免地需要设置和维护CI/CD流程，但多仓库模式下，每次起新项目都要在仓库中设置。
+- 跨服务和项目使用的公共依赖和库必须定期同步以获得最新版本。（列举一下element-plus遇到的bug）
+- 如使用同一技术栈的项目：data-admin device-admin，如果在开发中遇到了某些依赖库的bug，需要在多个仓库中同时更新。
+- 每个仓库都遵循不同的一组最佳实践来编写代码，从而导致难以遵循通用的最佳实践。
+- node-modules 重复空间占用巨大。
 
 </v-clicks>
 ---
 
-如今大部分的前端应用会采用Multi repo，即每个独立的项目都会有相对应的repo，对于维护自己的项目分清责任也很容易。
-（这里插入公司的各个项目）
 
-```
-Design-systems Repository
-design-systems
-  ├ node_modules
-  ├ e2e
-  ├ xxxx
-Admin Repository
-admin
-  | ├ node_modules
-  | ├ e2e
-  | ├ xx...
-```
-
-<br>
-<br>
 <v-clicks>
 
-这种方式看似不错，但也会带来一些问题
+所以这种仓库管理模式看似不错，但也会带来一些问题。
 
 </v-clicks>
 
@@ -80,42 +102,47 @@ h1 {
 
 ## 依赖项重复
 
-对于我们团队的前端项目，目前选定的技术栈已经正在向 jquery -> vue2.6 -> vue2.7 -> vue3.x 的方向演进，总体技术生态已经基本固定。这时候大部分项目所安装的依赖库都有重复
-<v-clicks>
+对于团队而言，目前选定的技术栈已经从 jquery 、 vue2.6 向 vue2.7 、 vue3.x 的方向演进，总体技术生态稳定。此时大部分新项目所安装的依赖库都有重复
 
-// 贴上相关package
+<div style="display: flex; justify-content: space-between;">
+  <img src="path/to/image1.jpg" style="width: 30%;" alt="alt text" v-click />
+  <img src="path/to/image2.jpg" style="width: 30%;" alt="alt text" v-click />
+  <img src="path/to/image3.jpg" style="width: 30%;" alt="alt text" v-click />
+</div>
 
-</v-clicks>
 ---
 
 ## 工程配置重复
 
 <div mt-4/>
 
-<v-clicks>
 
-贴上具体案例
-
-</v-clicks>
-<v-clicks>
-
-- webpack、vite配置管理，兼容性问题
-
-- 开发环境
-
-- 多仓库手动部署
-
-</v-clicks>
+<div style="display: flex; justify-content: space-between; text-align: center;">
+  <div v-click>
+    <img src="path/to/image1.jpg" style="width: 30%;" alt="alt text" />
+    <p> 打包配置 </p>
+  </div>
+  <div v-click>
+    <img src="path/to/image2.jpg" style="width: 30%;" alt="alt text" />
+    <p> 开发环境配置 </p>
+  </div>
+  <div v-click>
+    <img src="path/to/image3.jpg" style="width: 30%;" alt="alt text" />
+    <p> 多仓库手动部署 </p>
+  </div>
+</div>
 
 ---
 
 ## 跨项目代码难共享
 
-<v-clicks>
 
-贴例子
+<div style="display: flex; justify-content: space-between;">
+  <img src="path/to/image1.jpg" style="width: 30%;" alt="alt text" v-click />
+  <img src="path/to/image2.jpg" style="width: 30%;" alt="alt text" v-click />
+  <img src="path/to/image3.jpg" style="width: 30%;" alt="alt text" v-click />
+</div>
 
-</v-clicks>
 
 ---
 layout: center
@@ -125,21 +152,19 @@ layout: center
 
 ---
 
-## 什么是Monorepo
+## Monorepo 简介
 
-Monorepo 是一种项目代码管理方式，指单个仓库中管理多个项目。并不是一种工具，它只是对于项目的一种管理手段，一种思维方式。
+monorepo 是一种将**多个项目代码**存储在**一个仓库**里的软件开发**策略**（"mono" 来源于希腊语 μόνος 意味单个的，而 "repo"，显而易见地，是 repository 的缩写）。
 
 <v-clicks>
 
 - 统一管理 configs and tests。只有一个 repo 所以不需要再重复配置环境，包括 CI/CD、unit、e2e、webpack 都只需要维护一份就好。
 
-- 统一管理 依赖。
+- 统一管理 依赖，减少重复依赖项。
 
-- 复用模块代码以及share code
+- 复用模块代码
 
 - 简化组织
-
-- 减少重复依赖项
 
 - 跨项目代码共享
 
@@ -149,21 +174,30 @@ Monorepo 是一种项目代码管理方式，指单个仓库中管理多个项�
 
 # 经典开源案例
 
-<v-clicks>
-
-贴几个开源案例
-
-</v-clicks>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-flow: nowrap row; text-align: center;">
+  <div class="w-80% m-2" v-click>
+    <img src="/vue3.png" alt="alt text" />
+    <p> vue3 </p>
+  </div>
+  <div class="w-50% m-2" v-click>
+    <img src="/element-plus.png" alt="alt text" />
+    <p> element-plus </p>
+  </div>
+  <div  class="w-50% m-2" v-click>
+    <img src="/vben.png" alt="alt text" />
+    <p> vben-admin </p>
+  </div>
+</div>
 
 ---
 
-# pnpm： Workspace
+# pnpm 工作空间功能
 
-贴上具体的案例
+Workspace 协议 (workspace:): 当使用此协议时，pnpm 将拒绝解析除本地 workspace 包含的 package 之外的任何内容。 因此，如果您设置为 "foo": "workspace:2.0.0" 时，安装将会失败，因为 "foo@2.0.0" 不存在于此 workspace 中
 ---
 
-# 简易实现 Monorepo
-
+# 实现简易的 Monorepo
+熟悉构建流程
 ---
 
 # 项目实践
@@ -176,7 +210,7 @@ Monorepo 是一种项目代码管理方式，指单个仓库中管理多个项�
 
 # Monorepo的缺点
 
-monorepo也有一些不足的地方
+软件开发领域从来没有「银弹」。monorepo 策略也并不完美。
 
 <v-clicks>
 
@@ -192,7 +226,7 @@ monorepo也有一些不足的地方
 ---
 layout: center
 ---
-## 无论是对于代码层面的设计，亦或是仓库管理层面的设计思想，都像踩跷跷板一样，没有最好，只有最适合
+##  无论是对于代码层面的设计，亦或是仓库管理层面的设计思想，都像踩跷跷板一样，没有最好，只有最适合
 ---
 
 ## 查阅以下链接了解更多
