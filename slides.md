@@ -16,7 +16,7 @@ colorSchema: light
 # 前端工程化-Monorepo
 
 <p text-xl>
-优化代码管理，提供更好的可重用性和协作性
+优化代码管理以增强其可重复使用性和协同工作效率。
 </p>
 
 <div abs-bl mx-14 my-12 flex flex-col>
@@ -31,7 +31,7 @@ layout: two-cols
 # 现有仓库管理方式
 <v-click>
 
-我们大部分前端应用都采用`Multi repo`的方式来管理，即每个独立的项目都有相对应的`repo`，很容易维护自己的项目、并且分清责任。
+我们的大部分前端应用均采用Multi repo方式进行管理，即每个独立的项目都有其对应的repo。这种管理方式便于维护各自的项目并明确各自的责任。
 </v-click>
 ::right::
 <v-click>
@@ -72,10 +72,10 @@ chart
 
 <v-clicks>
 
-- 跨服务和项目使用的公共依赖和库必须定期同步以获得最新版本。（列举一下element-plus遇到的bug）
-- 如使用同一技术栈的项目：data-admin device-admin，如果在开发中遇到了某些依赖库的bug，需要在多个仓库中同时更新。
-- 每个仓库都遵循不同的一组最佳实践来编写代码，从而导致难以遵循通用的最佳实践。
-- node-modules 重复空间占用巨大。
+- 跨服务和项目使用的公共依赖和库必须定期同步以获得最新版本。
+- 使用相同技术栈的项目：data-admin device-admin，在开发过程中遇到了某些依赖库的bug，我们需要在多个仓库中同时进行更新。
+- 每个仓库都按照各自不同的最佳实践编写代码，这可能导致难以统一遵循通用的最佳实践
+- node-modules 的重复依赖会占用大量的存储空间。
 
 </v-clicks>
 ---
@@ -83,7 +83,7 @@ chart
 
 <v-clicks>
 
-所以这种仓库管理模式看似不错，但也会带来一些问题。
+虽然这种仓库管理模式看起来很好，但它也可能会带来一些问题。
 
 </v-clicks>
 
@@ -102,7 +102,7 @@ h1 {
 
 ## 依赖项重复
 
-对于团队而言，目前选定的技术栈已经从 jquery 、 vue2.6 向 vue2.7 、 vue3.x 的方向演进，总体技术生态稳定。此时大部分新项目所安装的依赖库都有重复
+对于我们的团队来说，目前选定的技术栈已经从 jQuery 和 Vue 2.6 向 Vue 2.7 和 Vue 3.x 进行了演进，整体技术生态稳定。然而，在这个过程中，我们发现大部分新项目所安装的依赖库都存在重复。
 
 <div style="display: flex; justify-content: space-between;">
   <img src="path/to/image1.jpg" style="width: 30%;" alt="alt text" v-click />
@@ -134,7 +134,7 @@ h1 {
 
 ---
 
-## 跨项目代码难共享
+## 跨项目间的代码共享存在一定的困难
 
 
 <div style="display: flex; justify-content: space-between;">
@@ -158,13 +158,38 @@ monorepo 是一种将**多个项目代码**存储在**一个仓库**里的软件
 
 <v-clicks>
 
+通过 monorepo 策略组织代码，我们的代码仓库的目录结构看起来会是这样：
+```
+.
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── package.json
+└── packages/ # 这里将存放所有子 repo 目录
+    ├── project_1/
+    │   ├── index.js
+    │   ├── node_modules/
+    │   └── package.json
+    ├── project_2/
+    │   ├── index.js
+    │   ├── node_module/
+    │   └── package.json
+    ...
+```
+
+</v-clicks>
+
+---
+
+# 优点
+<v-clicks>
+
 - 统一管理 configs and tests。只有一个 repo 所以不需要再重复配置环境，包括 CI/CD、unit、e2e、webpack 都只需要维护一份就好。
 
 - 统一管理 依赖，减少重复依赖项。
 
 - 复用模块代码
 
-- 简化组织
+- 简化组织，更易浏览项目
 
 - 跨项目代码共享
 
