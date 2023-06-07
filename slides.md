@@ -103,12 +103,13 @@ h1 {
 
 ## 依赖项重复
 
-对于我们的团队来说，目前选定的技术栈已经从 jQuery 和 Vue 2.6 向 Vue 2.7 和 Vue 3.x 进行了演进，整体技术生态稳定。在这个过程中，发现大部分新项目所安装的依赖库都存在重复。
+对于我们的团队来说，目前选定的技术栈已经从 jQuery 和 Vue 2.6 向 Vue 2.7 和 Vue 3.x 进行了演进，整体技术生态稳定。在这个过程中，发现大部分所安装的依赖库都存在重复。
 
 <div style="display: flex; justify-content: space-between;">
   <img src="/m-b-diff.png" style="width:50%;" alt="alt text" v-click />
   <img src="/d-d-diff.png" style="width: 50%;" alt="alt text" v-click />
 </div>
+
 
 ---
 
@@ -237,8 +238,8 @@ Workspace 协议 (workspace:): 执行`pnpm install`时，默认情况下，如�
 
 <v-click at="1">
 
-  <div style="display:flex;justify-content:flex-end">
-  <img src="/pnpminstall.png" style="height: 40vh;" alt="alt text" /></div>
+  <div style="display:flex;justify-content:flex-end; style="height: 45vh;"">
+  <img src="/pnpminstall.png" alt="alt text" /></div>
 
 </v-click>
 
