@@ -20,15 +20,19 @@ colorSchema: light
 </p>
 
 <div abs-bl mx-14 my-12 flex flex-col>
-  <div text-sm opacity-50>2023/06/02</div>
+  <div text-sm opacity-50>2023/06/08</div>
   <div text-sm opacity-50>Author: huangyan321</div>
 </div>
+
+<!--
+要认识monorepo，首先要知道这个东西到底解决了什么问题，他为什么会出现，所以我们要清楚，没有monorepo的时候，出现了哪些问题
+-->
 
 ---
 layout: two-cols
 ---
 
-要认识monorepo，首先要知道这个东西到底解决了什么问题，他为什么会出现，所以我们要清楚，没有monorepo的时候，出现了哪些问题
+<!-- 要认识monorepo，首先要知道这个东西到底解决了什么问题，他为什么会出现，所以我们要清楚，没有monorepo的时候，出现了哪些问题 -->
 
 # 团队实行的仓库管理策略
 
@@ -82,7 +86,7 @@ data-admin
 - 工程配置重复，每一个项目配置独立，缺乏通用性
 - 跨项目间的代码共享存在一定的困难
 - 难以遵循统一的最佳实践
-- 跨项目使用的公共依赖和库必须定期同步以获得最新版本。
+- 跨项目使用的公共依赖和库必须定期同步以获得最新版本
 
 </v-clicks>
 
@@ -137,7 +141,6 @@ h1 {
 <div style="display: flex; justify-content:center;">
   <img src="/hard-shared.png" class="mt-2" style="width:80%;" alt="alt text" v-click />
 </div>
-
 
 ---
 layout: center
@@ -238,7 +241,7 @@ Workspace 协议 (workspace:): 执行`pnpm install`时，默认情况下，如�
 
 <v-click at="1">
 
-  <div style="display:flex;justify-content:flex-end; style="height: 45vh;"">
+  <div style="display:flex;justify-content:flex-end; height: 45vh;">
   <img src="/pnpminstall.png" alt="alt text" /></div>
 
 </v-click>
@@ -255,6 +258,37 @@ Workspace 协议 (workspace:): 执行`pnpm install`时，默认情况下，如�
 
 # TurboRepo
 
+Vercel 团队开源的高性能构建代码仓库系统，允许开发者使用不同的构建系统。  
+
+构建加速思路：  
+Multiple Running Task：构建任务并行进行，构建顺序交给开发者配置  
+Cache、Remote Cache：通过缓存 及 远程缓存，减少构建时间
+
+<div class="w-80% m-auto" v-click>
+    <img src="/turbo3.webp" alt="alt text" />
+</div>
+
+---
+
+在传统的monorepo仓库中，比如使用了lerna或者yarn的workspace进行管理，每个npm包的script(如build或者test)，都是依赖执行或者独立并行的执行。如果一个命令存在包的依赖关系，那么在执行的时候，CPU的核心可能会被闲置，这样会导致计算性能和时间上的浪费。
+
+<div style="display: flex; justify-content: space-between; align-items: center; flex-flow: nowrap row; text-align: center;">
+    <div class="w-50% m-2" v-click>
+    <img src="/turbo1.webp" alt="alt text" />
+    <p> 优化前 </p>
+  </div>
+  <div class="w-50% m-2" v-click>
+    <img src="/turbo2.webp" alt="alt text" />
+    <p> 优化后 </p>
+  </div>
+</div>
+
+<v-click>
+
+[了解更多](https://turbo.build/repo/docs)
+
+</v-click>
+
 ---
 
 # Monorepo的缺点
@@ -270,6 +304,7 @@ Workspace 协议 (workspace:): 执行`pnpm install`时，默认情况下，如�
 - 发布构建的难度较大
 
 - 不适用于业务相对零散、项目之间关系不大的场景
+
 </v-clicks>
 
 ---
